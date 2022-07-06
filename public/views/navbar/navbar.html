@@ -1,0 +1,25 @@
+<nav>
+    <div class="nav-wrapper orange darken-2 white-text">
+        <div class="container">
+        <a href="#home" class="brand-logo">Quizz App</a>
+
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li ng-show="navBarCtrl.signedIn" ng-class="(currentPage == 'home' ? 'active' : '')"><a href="#!/home">Home</a></li>
+            <li ng-show="navBarCtrl.signedIn && navBarCtrl.isInstructor" ng-class="(currentPage == 'my_questions' ? 'active' : '')"><a href="#!/my_questions">My Questions</a> </li>
+            <li ng-show="navBarCtrl.signedIn" ng-class="(currentPage == 'account' ? 'active' : '')"><a href="#!/account">My Account</a> </li>
+            <li ng-show="navBarCtrl.signedIn"><a href ng-click="navBarCtrl.logout()">Sign Out</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li ng-show="navBarCtrl.signedIn" ng-class="(currentPage == 'home' ? 'active' : '')"><a href="#!/home">Home</a></li>
+            <li ng-show="navBarCtrl.signedIn && navBarCtrl.isInstructor" ng-class="(currentPage == 'my_questions' ? 'active' : '')"><a href="#!/my_questions">My Questions</a> </li>
+            <li ng-show="navBarCtrl.signedIn" ng-class="(currentPage == 'account' ? 'active' : '')"><a href="#!/account">My Account</a> </li>
+            <li ng-show="navBarCtrl.signedIn"><a href ng-click="navBarCtrl.logout()">Sign Out</a></li>
+        </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    $(".button-collapse").sideNav();
+</script>

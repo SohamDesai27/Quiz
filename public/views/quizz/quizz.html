@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row top20">
+        <div class="col s12">
+            <h5 class="grey-text text-darken-4">{{ ctrl.quizz.name }}</h5>
+        </div>
+        <div class="col s12 m3 grey-text text-darken-1 top10">
+            Start Date: &nbsp;{{ ctrl.quizz.startDate | date: date}}
+        </div>
+        <div class="col s12 m3 grey-text text-darken-1 top10">
+            Due Date:&nbsp;&nbsp;&nbsp; {{ ctrl.quizz.dueDate | date: date }}
+        </div>
+        <div class="col s12 m3 grey-text text-darken-1 top10">
+            Questions: {{ ctrl.quizz.questions.length}}
+        </div>
+        <div class="col s12 m3 grey-text text-darken-1 top10">
+            Points: {{ ctrl.quizz.points}}
+        </div>
+        <div class="col s12 grey-text text-darken-3 top20">
+            {{ ctrl.quizz.description }}
+        </div>
+    </div>
+
+    <div class="row top20">
+        <div class="col s12 m9">
+            <h5 class="grey-text text-darken-4"> Questions </h5>
+        </div>
+        <a data-target="selectQuestionModal" modal href class="waves btn teal darken-2 white-text col s12 m3">Select Questions&nbsp;<i class="material-icons">note_add</i></a>
+    </div>
+
+    <table class="striped table-responsive centered top20">
+        <thead>
+        <tr class="grey-text text-darken-4">
+            <th>Title</th>
+            <th>Language</th>
+            <th>Difficulty</th>
+            <th>Points</th>
+            <th>Updated At</th>
+            <th>Active Date</th>
+            <th>Due Date</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="question in ctrl.quizz.questions | filter:search:strict | orderBy:predicate:reverse">
+            <td>{{ question.title }}</td>
+            <td>{{ question.language }}</td>
+            <td>{{ question.difficulty }}</td>
+            <td>{{ question.points }}</td>
+            <td>{{ question.updatedAt | date: date }}</td>
+            <td>{{ question.activeDate | date: date }}</td>
+            <td>{{ question.dueDate | date: date }}</td>
+            <td>
+                <span ng-show="question.active"><i class="material-icons green-text">check_circle</i></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div ng-include="'views/quizz/select_question_modal.html'"></div>

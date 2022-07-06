@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row top20">
+
+        <h4 class="col s12 grey-text text-darken-4">Active Questions</h4>
+
+        <div ng-repeat="question in ctrl.activeQuestions | filter:{active:true} | orderBy: '-date'">
+            <div class="col s12 m6">
+                <div class="z-depth-3">
+                    <div class="card horizontal">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5 class="grey-text text-darken-4">{{question.title}}</h5>
+                                <p class="top5 grey-text text-darken-2">{{question.body}}</p>
+                                <div class="row top20">
+                                    <div class="col s3 padding-5">
+                                        <div class="pill orange white-text center padding-5">
+                                            {{question.points}} points
+                                        </div>
+                                    </div>
+                                    <div class="col s3 padding-5">
+                                        <div class="pill white-text center padding-5" ng-class="question.difficulty == 'Easy' ? 'green'
+                                        : question.difficulty == 'Medium' ? 'amber darken2' : 'red'" >
+                                            {{question.difficulty}}
+                                        </div>
+                                    </div>
+                                    <div class="col s6 padding-5">
+                                        <div class="pill indigo white-text center padding-5">
+                                            Due {{question.dueDate | date:date}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action orange-text text-darken-3 grey darken-2">
+                                <a href="#!/question/{{question._id}}">View Problem</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="page-background" style="height: 100%; width: 100%">
+    <div class="row" style="padding-top: 40px;">
+        <div class="row">
+            <div class="input-field col s10 offset-s1 m4 offset-m4 grey-text text-darken-4">
+                <i class="material-icons prefix grey-text text-darken-4">email</i>
+                <input id="email" ng-model="user.email" type="text" class="validate">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-field col s10 offset-s1 m4 offset-m4 grey-text text-darken-4">
+                <i class="material-icons prefix grey-text text-darken-4">lock</i>
+                <input id="password" ng-model="user.password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+
+            <a class="waves-effect waves-light btn col s10 offset-s1 m2 offset-m5 grey darken-4"
+               style="margin-top: 30px;"
+               type="submit" ng-disabled = '' ng-click="ctrl.signIn()"> Sign In </a>
+
+            <a class="waves-effect waves-light btn col s10 offset-s1 m2 offset-m5 teal darken-1"
+               style="margin-top: 30px;"
+               href="#!/sign_up"
+               type="submit">Create Account</a>
+
+            <div class="col s12 center" style="margin-top: 30px;">
+                <a class="orange-text text-darken-3" href data-target='forgotModal' modal>Forgot Username or Password?</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'views/sign_in/forgotModal.html'"></div>

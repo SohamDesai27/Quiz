@@ -1,0 +1,172 @@
+<div class="container">
+    <div class="row top20 bottom20">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">label</i>
+                <input id="title" ng-model="ctrl.question.title" type="text" class="validate">
+                <label for="title">Title</label>
+            </div>
+
+            <div class="input-field col s12">
+                <i class="material-icons prefix">chat_bubble</i>
+                <textarea id="body" ng-model="ctrl.question.body" class="materialize-textarea"> </textarea>
+                <label for="body">Question</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix">description</i>
+                <input id="language" ng-model="ctrl.question.language" type="text" class="validate">
+                <label for="language">Language</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix">content_paste</i>
+                <input id="topics" ng-model="ctrl.question.topics" type="text" class="validate">
+                <label for="topics">Topics</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix">bookmark</i>
+                <!--<input id="difficulty" ng-model="ctrl.question.difficulty" type="text" class="validate">-->
+                <select ng-model="ctrl.question.difficulty" material-select id="difficulty" watch>
+                    <option ng-repeat="di in difficulties" ng-selected="di === ctrl.question.difficulty">{{ di }}
+                    </option>
+                </select>
+                <label for="difficulty">Difficulty</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix">bookmark</i>
+                <input id="points" ng-model="ctrl.question.points" type="text" class="validate">
+                <label for="points">Points</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix">event_note</i>
+                <input input-date
+                       type="text"
+                       name="activeDate"
+                       id="activeDate"
+                       class="date-picker-hoverable"
+                       select-years="1"
+                       max="{{ ctrl.question.dueDate }}"
+                       ng-model="ctrl.question.activeDate"
+                       format="mmm dd, yyyy"
+                />
+                <label for="activeDate">Active Date</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix">today</i>
+                <input input-date
+                       type="text"
+                       name="dueDate"
+                       id="dueDate"
+                       class="date-picker-hoverable"
+                       select-years="1"
+                       min="{{ ctrl.question.activeDate }}"
+                       ng-model="ctrl.question.dueDate"
+                       format="mmm dd, yyyy"
+                />
+                <label for="dueDate">Due Date</label>
+            </div>
+        </div>
+        <div class="input-field row">
+            <div class="row inline-icon-text">
+                <div class="col s11">
+                    <h5><i class="material-icons">code</i>&nbsp;Test Cases</h5>
+                </div>
+                <div class="col s1"><br/>Public</div>
+            </div>
+            <div class="row">
+                <ul class="collection">
+                    <li class="collection-item row valign" ng-repeat="ti in ctrl.question.testCases">
+                        <div class="col s11">
+                            <i class="material-icons teal-text">label</i>&nbsp;&nbsp;{{ ti.input }}
+                        </div>
+                        <div class="col s1 center">
+                            <input type="checkbox" id="{{ti.input}}" ng-model="ti.public" class="filled-in"/>
+                            <label for="{{ti.input}}"></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m10">
+                    <i class="material-icons prefix">label</i>
+                    <input id="newTestCase" ng-model="ctrl.newTestCase.input" type="text" class="validate">
+                    <label for="newTestCase">Add Test Case</label>
+                </div>
+                <div class="col s6 m1">
+                    <br/>
+                    <input type="checkbox" id="newTestCasePublic" ng-model="ctrl.newTestCase.public" class="filled-in"/>
+                    <label for="newTestCasePublic">Public?</label>
+                </div>
+                <div class="col s6 m1">
+                    <br/>
+                    <a href class="btn waves-effect" ng-click="ctrl.addTestCase()">Add</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h5><i class="material-icons">insert_drive_file</i>&nbsp;Input Files</h5>
+            <ul class="collapsible" data-collapsible="accordion" watch>
+                <li ng-repeat="inputFile in ctrl.question.inputFiles">
+                    <div class="collapsible-header">
+                        <div class="col s11">
+                            <i class="material-icons teal-text">label</i>&nbsp;&nbsp;
+                            {{ inputFile.name ? "Filename: " + inputFile.name : "Reference: " + inputFile.reference }}
+                        </div>
+                        <div class="col s1 center">
+                            <span ng-show="inputFile.reference == null"><i class="material-icons">expand_more</i></span>
+                        </div>
+                    </div>
+                    <div class="collapsible-body" ng-show="inputFile.contents != null">
+                        <span>{{ inputFile.contents }}</span>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="row">
+                <div class="input-field col s12 m10">
+                    <i class="material-icons prefix">label</i>
+                    <input id="newInputFile" ng-model="ctrl.newInputFile.nameRef" type="text" class="validate">
+                    <label for="newInputFile">File name or Reference</label>
+                </div>
+                <div class="input-field col s6 m2">
+                    <input type="checkbox" id="newTestCaseReference" ng-model="ctrl.newInputFile.isReference" class="filled-in"/>
+                    <label for="newTestCaseReference">Reference?</label>
+                </div>
+                <div class="input-field col s12 m12">
+                    <i class="material-icons prefix">chat_bubble</i>
+                    <textarea id="inputFileContents" ng-model="ctrl.newInputFile.contents" class="materialize-textarea"></textarea>
+                    <label for="inputFileContents">Input File Contents</label>
+                </div>
+                <a href class="col s6 m3 offset-s3 offset-m9 btn waves-effect" ng-click="ctrl.addInputFile()">Add Input File</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <h5 class="bottom20">Starter Code</h5>
+            <div ui-codemirror="ctrl.cmOption" ng-model="ctrl.question.starterCode"></div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h5 class="bottom20">Complete Solution</h5>
+            </div>
+            <div class="input-field col s12">
+                <input id="fileName" ng-model="ctrl.question.filename" type="text" class="validate">
+                <label for="fileName">Filename</label>
+            </div>
+            <div class="col s12">
+                <div ui-codemirror="ctrl.cmOption" ng-model="ctrl.question.completeSolution"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <a href class="btn waves-effect col s12 m4 offset-m4" ng-click="ctrl.submit()">Submit</a>
+        </div>
+    </div>
+</div>

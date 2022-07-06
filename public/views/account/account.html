@@ -1,0 +1,90 @@
+<nav>
+    <div class="nav-wrapper orange darken-2">
+        <div class="container white-text">
+            <span class="bar-text"> Welcome {{ ctrl.user.firstName }} {{ ctrl.user.lastName }}</span>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row top20">
+        <div class="col s12 m9 top20">
+            <h5>Courses</h5>
+        </div>
+        <div class="col s12 m3 top20 right">
+            <div class="row">
+                <a href class="waves btn teal darken-2 white-text top10 col s12"
+                   data-target='newCourseModal' modal ng-show="ctrl.isInstructor">&nbsp;&nbsp;&nbsp;Add Course&nbsp;&nbsp;&nbsp;</a>
+                <a href class="waves-effect waves-light btn grey darken-4 white-text top10 col s12"
+                   data-target='newCourseModalStudent' modal ng-show="!ctrl.isInstructor">&nbsp;&nbsp;&nbsp;Add Course&nbsp;&nbsp;&nbsp;</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="striped table-responsive centered top20">
+            <thead>
+            <tr class="grey-text text-darken-4">
+                <th>Name</th>
+                <th ng-show="!ctrl.isInstructor">Class Number</th>
+                <th>Description</th>
+                <th>Season</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th ng-show="ctrl.isInstructor">Code</th>
+                <th ng-show="ctrl.isInstructor" colspan="3"></th>
+                <th ng-show="!ctrl.isInstructor">Instructor E-Mail</th>
+                <th>View</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="course in ctrl.courses | filter:search:strict | orderBy:predicate:reverse">
+                <td> {{ course.name }}</td>
+                <td ng-show="!ctrl.isInstructor"> {{ course.class }}</td>
+                <td> {{ course.description | limitTo : 60}}{{ course.description.length > 60 ? "..." : "" }}</td>
+                <td> {{ course.season }}</td>
+                <td> {{ course.startDate | date: date }}</td>
+                <td> {{ course.endDate | date: date }}</td>
+                <td ng-show="ctrl.isInstructor"> {{ course.code }}</td>
+                <td ng-show="ctrl.isInstructor">
+                    <a href data-target='newCourseModal' modal ng-click="ctrl.editCourse(course)" class="indigo-text">
+                        <i class="material-icons">edit</i>
+                    </a>
+                </td>
+                <td ng-show="ctrl.isInstructor">
+                    <a href data-target="deleteModal" modal ng-click="ctrl.deleteCourse(course)" class="red-text">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+                <td ng-show="ctrl.isInstructor">
+                    <a href data-target="newQuizzModal" modal ng-click="ctrl.newQuizz(course)" class="teal-text text-darken-2">
+                        New Quizz
+                    </a>
+                </td>
+                <td ng-show="!ctrl.isInstructor"> {{ course.instructor }}</td>
+                <td>
+                    <a href ng-click="ctrl.viewCourse(course)"
+                       class="modal-action modal-close orange-text text-darken-3">
+                        <i class="material-icons">open_in_new</i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div ng-include="'views/account/new_course_modal.html'"></div>
+<div ng-include="'views/account/new_course_modal_student.html'"></div>
+<div ng-include="'views/account/new_quizz_modal.html'"></div>
+
+<div class="modal" id="deleteModal">
+    <div class="modal-content">
+        <h5>Delete confirmation</h5>
+        <p>Are you sure you want to permanently delete this course?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:" ng-click="ctrl.deleteCourse()"
+           class="modal-action modal-close waves-effect waves-green btn-flat red-text">Delete</a>
+        <a href="javascript:" class="grey-text modal-close modal-action waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+</div>

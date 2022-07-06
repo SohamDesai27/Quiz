@@ -1,0 +1,73 @@
+<nav>
+    <div class="nav-wrapper orange darken-2">
+        <div class="container">
+            <span class="breadcrumb"><a href="#!/account">My Account</a></span>
+            <span class="breadcrumb"><a href="#!/account">Courses</a></span>
+            <span class="breadcrumb orange-text text-lighten-4">{{ ctrl.course.name }}</span>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row top40">
+        <p class="text-darken-3 grey-text spaced-text">{{ ctrl.course.description }}</p>
+    </div>
+
+    <div class="row top20">
+        <div class="col s6 m3 padding-5">
+            <div class="pill indigo white-text center padding-5">
+                {{ ctrl.course.season}} {{ ctrl.course.startDate  | date: 'yyyy' }}
+            </div>
+        </div>
+        <div class="col s6 m3 padding-5">
+            <div class="pill orange darken-2 white-text center padding-5">
+                Code: {{ ctrl.course.code }}
+            </div>
+        </div>
+        <div class="col s6 m3 padding-5">
+            <div class="pill grey darken-3 white-text center padding-5">
+                Start Date: {{ ctrl.course.startDate  | date: date }}
+            </div>
+        </div>
+        <div class="col s6 m3 padding-5">
+            <div class="pill grey darken-3 white-text center padding-5">
+                End Date: {{ ctrl.course.endDate  | date: date }}
+            </div>
+        </div>
+    </div>
+
+    <div class="top40"></div>
+    <hr />
+
+    <div class="row top20">
+        <h4 class="grey-text text-darken-4"> Grades </h4>
+    </div>
+    <div class="row top20">
+        <table class="striped table-responsive centered top20">
+            <thead>
+            <tr class="grey-text text-darken-4">
+                <th>Question</th>
+                <th>Submission Date</th>
+                <th>Due Date</th>
+                <th>Difficulty</th>
+                <th>Score</th>
+                <th>View</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="sub in ctrl.grades | filter:search:strict | orderBy:predicate:reverse">
+                <td> {{ sub.question.title }}</td>
+                <td> {{ sub.updatedAt | date }}</td>
+                <td> {{ sub.question.dueDate | date }}</td>
+                <td> {{ sub.question.difficulty }}</td>
+                <td> {{ sub.score }} / {{ sub.question.points }}</td>
+                <td>
+                    <a href ng-click="ctrl.viewSubmission(sub)"
+                       class="modal-action modal-close orange-text text-darken-3">
+                        <i class="material-icons">open_in_new</i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

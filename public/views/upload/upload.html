@@ -1,0 +1,37 @@
+<div class="container">
+
+    <div class="row top20 center">
+        <h5 class="text-darken-4 grey-text">Select a file or drag and drop a file into the input box.</h5>
+    </div>
+
+    <div class="row">
+        <div class="file-field input-field col s12 m10">
+            <div class="btn waves-effect">
+                <span>Select or Drop a File</span>
+                <input type="file"
+                       ngf-select
+                       ng-model="questionFile"
+                       name='file'
+                       ngf-pattern="text/*"
+                       accept="text/*">
+            </div>
+
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+
+        <a href class="btn waves-effect grey darken-4 col s10 offset-s1 m2 top20" ng-click="ctrl.submit()">Upload&nbsp;&nbsp;&nbsp;<i class="material-icons">cloud_upload</i></a>
+
+    </div>
+
+
+
+    <div ng-show="ctrl.fileUploading" class="animate-show-hide">
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+        <div class="center">Uploading...</div>
+    </div>
+
+</div>

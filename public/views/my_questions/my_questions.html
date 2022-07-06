@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row top20 right">
+        <a href="#!/newQuestion" class="waves btn teal darken-2 white-text">Create New Question &nbsp;&nbsp;<i class="material-icons">note_add</i></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#!/upload" class="waves btn grey darken-4 white-text">Upload Question&nbsp;&nbsp; <i class="material-icons">cloud_upload</i></a>
+    </div>
+    <table class="striped table-responsive centered top20">
+        <thead>
+        <tr class="grey-text text-darken-4">
+            <th>Title</th>
+            <th>Language</th>
+            <th>Difficulty</th>
+            <th>Points</th>
+            <th>Updated At</th>
+            <th>Active Date</th>
+            <th>Due Date</th>
+            <th>Active</th>
+            <th colspan="2"> </th>
+            <th>View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="question in ctrl.questions | filter:search:strict | orderBy:predicate:reverse">
+            <td> {{ question.title }}</td>
+            <td> {{ question.language }}</td>
+            <td> {{ question.difficulty }}</td>
+            <td> {{ question.points }} </td>
+            <td> {{ question.updatedAt | date: date }}</td>
+            <td> {{ question.activeDate | date: date }}</td>
+            <td> {{ question.dueDate | date: date }}</td>
+            <td>
+                <input type="checkbox" id="{{question._id}}" ng-click="ctrl.makeActive(question)" ng-model="question.active" class="filled-in"/>
+                <label for="{{question._id}}"></label>
+            </td>
+            <td>
+                <a href="javascript:" ng-click="ctrl.openEditPage(question)" class="indigo-text"><i class="material-icons">edit</i></a>
+            </td>
+            <td>
+                <a href data-target="deleteModal" modal ng-click="ctrl.openDeleteModal(question)"
+                   class="red-text"><i class="material-icons">delete</i></a>
+            </td>
+            <td>
+                <a href ng-click="ctrl.viewQuestion(question)" class="modal-action modal-close orange-text text-darken-3"><i class="material-icons">open_in_new</i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" id="deleteModal">
+    <div class="modal-content">
+        <h5>Delete confirmation</h5>
+        <p>Are you sure you want to permanently delete this question?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:" ng-click="ctrl.deleteSingleQuestion()" class="modal-action modal-close waves-effect waves-green btn-flat red-text">Delete</a>
+        <a href="javascript:" class="grey-text modal-close modal-action waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+</div>

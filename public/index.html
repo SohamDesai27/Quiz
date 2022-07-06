@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CS4570">
+<head>
+    <meta charset="UTF-8">
+    <title>CS 4570</title>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="bower_components/materialize/dist/css/materialize.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css"/>
+    <!-- Default theme for CodeMirror: This will be changed later when we decide on a theme -->
+    <link rel="stylesheet" href="bower_components/codemirror/theme/monokai.css"/>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <navbar></navbar>
+</header>
+<main>
+    <ng-view></ng-view>
+</main>
+
+<app-footer></app-footer>
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-materialize/src/angular-materialize.js"></script>
+<script type="text/javascript" src="bower_components/codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="bower_components/codemirror/mode/clike/clike.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-codemirror/ui-codemirror.min.js"></script>
+<script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+<script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="views/navbar/Navbar.js"></script>
+<script type="text/javascript" src="views/footer/Footer.js"></script>
+<!-- Services -->
+<script type="text/javascript" src="services/QuestionService.js"></script>
+<script type="text/javascript" src="services/EncodeService.js"></script>
+<script type="text/javascript" src="services/UserService.js"></script>
+<script type="text/javascript" src="services/UserSubmissionService.js"></script>
+<script type="text/javascript" src="services/UploadServices.js"></script>
+<script type="text/javascript" src="services/CourseService.js"></script>
+<script type="text/javascript" src="services/QuizzService.js"></script>
+<script type="text/javascript" src="services/ValidationService.js"></script>
+
+<!-- View Controllers -->
+<script type="text/javascript" src="views/home/HomeController.js"></script>
+<script type="text/javascript" src="views/upload/ProblemUploadController.js"></script>
+<script type="text/javascript" src="views/question_preview/QuestionPreviewEditController.js"></script>
+<script type="text/javascript" src="views/sign_in/SignInController.js"></script>
+<script type="text/javascript" src="views/sign_up/SignUpController.js"></script>
+<script type="text/javascript" src="views/account/MyAccountController.js"></script>
+<script type="text/javascript" src="views/my_questions/MyQuestionsController.js"></script>
+<script type="text/javascript" src="views/account/CourseController.js"></script>
+<script type="text/javascript" src="views/question/QuestionController.js"></script>
+<script type="text/javascript" src="views/quizz/QuizzController.js"></script>
+<script type="text/javascript" src="views/submissions/SubmissionsController.js"></script>
+<script type="text/javascript" src="views/submissions/SubmissionViewController.js"></script>
+<script type="text/javascript" src="views/account/StudentCourseController.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            inDuration: 300, // Transition in duration
+            outDuration: 200, // Transition out duration
+            startingTop: '4%', // Starting top style attribute
+            endingTop: '10%', // Ending top style attribute
+        });
+    });
+</script>
+
+</body>
+</html>

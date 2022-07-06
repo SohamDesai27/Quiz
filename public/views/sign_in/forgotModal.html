@@ -1,0 +1,24 @@
+<div id="forgotModal" class="modal">
+
+    <div class="modal-content">
+        <div class="row">
+            <h4 class="center-align grey-text text-darken-3k col s10 offset-s1">Recover Password</h4>
+            <i class="material-icons grey-text">close</i></a>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m8 offset-m2">
+                <i class="material-icons prefix">email</i>
+                <input id="email" type="email" class="validate" ng-model="recoveryEmail">
+                <label for="email">Email</label>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" ng-click="recoverPassword()">
+                Recover Password
+            </a>
+        </div>
+
+    </div>
+</div>

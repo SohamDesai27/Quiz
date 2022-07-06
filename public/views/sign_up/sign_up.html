@@ -1,0 +1,51 @@
+<div class="page-background" style="height: 100%; width: 100%">
+    <div class="row" style="padding-top: 40px;">
+        <div class="row">
+            <form name = "userForm" autocomplete="off" novalidate>
+                <div class="input-field s10 offset-s1 col m4 offset-m4 grey-text darken-4">
+                    <i class="material-icons prefix grey-text text-darken-4">email</i>
+                    <input id="username" name="username" type="email" ng-model="user.email" class = "validate">
+                    <label for="username" data-error = "Enter a valid email address!">Email</label>
+                </div>
+
+                <div class="input-field s10 offset-s1 col m4 offset-m4 grey-text darken-4">
+                    <i class="material-icons prefix grey-text text-darken-4">person</i>
+                    <input id="first_name" name ="first_name" ng-model="user.firstName" type="text"
+                           ng-class="(emptyInput(user.firstName) || userForm.first_name.$pristine) ? 'valid' : 'invalid'" >
+                    <label for="first_name" data-error = "Please enter your First Name, it is required.">First Name</label>
+                </div>
+
+                <div class="input-field s10 offset-s1 col m4 offset-m4 grey-text darken-4">
+                    <i class="material-icons prefix grey-text text-darken-4">person</i>
+                    <input id="last_name"  name = "last_name" ng-model="user.lastName" type="text"
+                           ng-class="(emptyInput(user.lastName) || userForm.last_name.$pristine) ? 'valid' : 'invalid'">
+                    <label for="last_name" data-error = "Please enter your Last Name, it is required.">Last Name</label>
+                </div>
+
+                <div class="input-field s10 offset-s1 col m4 offset-m4 grey-text darken-4">
+                    <i class="material-icons prefix grey-text text-darken-4">lock</i>
+                    <input id="password" type="password" name = "password" ng-model="user.password"
+                           ng-class="(emptyInput(user.password) || userForm.password.$pristine) ? 'valid' : 'invalid'">
+                    <label for="password" data-error = "Password is also required.">Password</label>
+                </div>
+
+                <div class="input-field s10 offset-s1 col m4 offset-m4 grey-text darken-4">
+                    <i class="material-icons prefix grey-text text-darken-4">lock</i>
+                    <input id="confirm_password" name = "confirm_password" ng-class="(validConfirmPassword() || userForm.confirm_password.$pristine) ? 'valid' : 'invalid'"
+                           type="password" ng-model="user.confirmPassword">
+                    <label for="confirm_password"  data-error="Must be same as Password!">Confirm Password</label>
+                </div>
+
+                <div class="input-field s10 offset-s1 col m4 offset-m4 grey-text darken-4">
+                    <i class="material-icons prefix grey-text text-darken-4">school</i>
+                    <input id="cwid" type="text" ng-model="user.cwid" class="validate">
+                    <label for="cwid">CWID</label>
+                </div>
+
+                <a class="waves-effect waves-light btn col s10 offset-s1 m2 offset-m5 grey darken-4"
+                   style="margin-top: 30px;"
+                   ng-model="button" ng-disabled="!validConfirmPassword()" ng-click="ctrl.createAccount()"> Create Account </a>
+            </form>
+        </div>
+    </div>
+</div>

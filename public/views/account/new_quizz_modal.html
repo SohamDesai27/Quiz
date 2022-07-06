@@ -1,0 +1,62 @@
+<div id="newQuizzModal" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <h4 class="orange-text text-darken-3 col s11">New Quizz</h4>
+            <a href="javascript:" class="modal-close"><i class="material-icons grey-text text-darken-4">close</i></a>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix grey-text text-darken-4">label</i>
+                <input id="title" ng-model="ctrl.quizz.name" type="text" class="validate">
+                <label for="title">Quizz Name</label>
+            </div>
+
+            <div class="input-field col s12">
+                <i class="material-icons prefix grey-text text-darken-4">chat_bubble</i>
+                <textarea id="body" ng-model="ctrl.quizz.description" class="materialize-textarea"> </textarea>
+                <label for="body">Description</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix">bookmark</i>
+                <input id="points" ng-model="ctrl.quizz.points" type="text" class="validate">
+                <label for="points">Points</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix grey-text text-darken-4">event_note</i>
+                <input input-date
+                       type="text"
+                       name="startDate"
+                       id="startDate"
+                       class="date-picker-hoverable"
+                       select-years="1"
+                       max="{{ ctrl.quizz.dueDate }}"
+                       ng-model="ctrl.quizz.startDate"
+                       format="mmm dd, yyyy"
+                />
+                <label for="startDate">Start Date</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <i class="material-icons prefix grey-text text-darken-4">today</i>
+                <input input-date
+                       type="text"
+                       name="dueDate"
+                       id="dueDate"
+                       class="date-picker-hoverable"
+                       select-years="1"
+                       min="{{ ctrl.quizz.startDate }}"
+                       ng-model="ctrl.quizz.dueDate"
+                       format="mmm dd, yyyy"
+                />
+                <label for="dueDate">Due Date</label>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:" ng-click="ctrl.addQuizz()" class="modal-action modal-close waves-effect waves-green btn-flat">Add Quizz</a>
+        <a href="javascript:" class="red-text modal-close modal-action waves-effect waves-red btn-flat">Discard Changes</a>
+    </div>
+</div>

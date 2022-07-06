@@ -1,0 +1,77 @@
+<div class="row container100 monokai-background">
+    <nav>
+        <div class="nav-wrapper orange darken-2">
+            <div class="col s12" style="padding-left: 40px;">
+                <span class="breadcrumb">Question</span>
+                <span class="breadcrumb">{{ ctrl.question.title }}</span>
+            </div>
+        </div>
+    </nav>
+    <div style="padding: 10px;">
+        <div class="col s6 monokai-background">
+            <div ui-codemirror="ctrl.options" ng-model="ctrl.code"></div>
+        </div>
+        <div class="col s6">
+            <div id="question-card" class="card orange darken-2">
+                <div class="card-content white-text">
+                <span class="card-title">
+                    {{ ctrl.question.title }}
+                </span>
+                    <div class="row">
+                        {{ ctrl.question.body }}
+                    </div>
+                    <div class="row top20">
+                        <div class="col s4 padding-5">
+                            <div class="pill grey darken-3 white-text center padding-5">
+                               {{ ctrl.sub ? ctrl.sub.score + ' /' : ''}} {{ ctrl.question.points }} points
+                            </div>
+                        </div>
+                        <div class="col s4 padding-5">
+                            <div class="pill white-text center padding-5" ng-class="ctrl.question.difficulty == 'Easy' ? 'green'
+                                        : ctrl.question.difficulty == 'Medium' ? 'amber darken2' : 'red'">
+                                {{ ctrl.question.difficulty }}
+                            </div>
+                        </div>
+                        <div class="col s4 padding-5">
+                            <div class="pill indigo white-text center padding-5">
+                                Due {{ ctrl.question.dueDate | date:date }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a class="waves-effect waves-light btn teal" data-ng-click="submitStudentCode()">
+                            Submit <i class="material-icons right">send</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-repeat="r in ctrl.testCaseResults track by $index" id="prcoessesdTestCases" class="col s6"
+                 style="padding: 5px;">
+                <div ng-class="{'card green' : r.result, 'card red' : !r.result}">
+                    <div ng-if="r.public" class="card-content">
+                        <i ng-if="r.result" class="material-icons left">
+                            thumb_up
+                        </i>
+                        <i ng-if="!r.result" class="material-icons left">
+                            thumb_down
+                        </i>
+                        Test Case: {{r.input}}
+                    </div>
+                    <div ng-if="!r.public" class="card-content">
+                        <i ng-if="r.result" class="material-icons left">
+                            thumb_up
+                        </i>
+                        <i ng-if="!r.result" class="material-icons left">
+                            thumb_down
+                        </i>
+                        Hidden Test Case
+                    </div>
+                </div>
+            </div>
+            <div class="red-text text-lighten-2">
+                {{ ctrl.stackTrace }}
+            </div>
+        </div>
+    </div>
+</div>
+

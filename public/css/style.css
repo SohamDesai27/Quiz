@@ -1,0 +1,105 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.spaced-text {
+    line-height: 1.8em;
+}
+
+.pill {
+    border-radius: 20px;
+}
+
+.padding-5 {
+    padding: 5px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.CodeMirror {
+    height: 100vh;
+}
+
+.monokai-background {
+    background: #272822;
+}
+
+.container100 {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.codemirror-100 {
+    height: 100%;
+    overflow: hidden;
+}
+
+.top5 {
+    margin-top: 5px;
+
+}
+
+.top10 {
+    margin-top: 10px;
+}
+
+.top20 {
+    margin-top: 20px;
+}
+
+.top40 {
+    margin-top: 40px;
+}
+
+.bottom20 {
+    margin-bottom: 20px;
+}
+
+.right20 {
+    margin-right: 20px;
+}
+
+.date-picker-hoverable {
+    background-color: white;
+}
+
+.date-picker-hoverable:hover {
+    background-color: rgba(230, 230, 230, 0.5);
+    cursor: pointer;
+}
+
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.public-pill {
+    background-color: #2bbbad;
+    border-radius: 20px;
+    color: whitesmoke;
+    padding: 5px 10px;
+}
+
+.bar-text {
+    font-size: 1.4em;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
