@@ -16,5 +16,3 @@ Instructor: Dr. David Cline
 5. Make sure the mongo service is running
 6. run the command ```node server.js```
 
-For mac users: How to automatically start Mongodb when the computer starts
-https://alicoding.com/how-to-start-mongodb-automatically-when-starting-your-mac-os-x/
